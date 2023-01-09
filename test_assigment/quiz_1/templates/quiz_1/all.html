@@ -1,0 +1,29 @@
+{% extends 'quiz_1/base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+    <h1>Тесты</h1>
+    {% if all_quizzes %}
+        {% for quiz in all_quizzes %}
+            {% if quiz.for_authenticated_only == True and user.is_authenticated != True %}
+                <div class="alert bg-light">
+                    <h2>{{ quiz.title }}</h2>
+                    <h3>{{ quiz.description }}</h3>
+                </div>
+            <p class="link-read-post read"><a href="{% url 'login'  %}">Этот тест доступен только
+                авторизированным пользователям</a></p>
+            {% else %}
+                <div class="alert bg-light">
+                    <h2>{{ quiz.title }}</h2>
+                    <h3>{{ quiz.description }}</h3>
+                </div>
+            <p class="link-read-post read"><a href="{% url 'quiz' quiz.pk %}">Пройти тест</a></p>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h4>Пока нет ни одного теста</h4>
+    {% endif %}
+{% endblock %}

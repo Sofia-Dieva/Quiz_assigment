@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Recipes</title>
+    <title>Тесты</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <style>
         .log-in{
@@ -27,15 +27,15 @@
 <body>
 <main>
     <div class="log-in">
-        <h2>Log In</h2>
+        <h2>Войти</h2>
         <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
             <p class="button">
-        <button type="submit">Log In</button>
+        <button type="submit">Войти</button>
             </p>
         </form>
-        <a class="btn btn-outline-secondary" href='{% url "signup" %}'>Don`t have an account? Sign up!</a>
+        <a class="btn btn-outline-secondary" href='{% url "signup" %}'>Нет аккаунта? Зарегистрируйтесь!</a>
     </div>
 </main>
 </body>
